@@ -28,21 +28,22 @@
 %%
 
 P   : S
-           { var ss = JSON.stringify(s, undefined, 2); console.log(ss);
-					   return "<ul>\n<li> symbol table;<p> "+ ss + "\n </ul>";
-					 }
-		;
+          {
+             var ss = JSON.stringify(s, undefined, 2); 
+             console.log(ss);
+	     return "<ul>\n<li> symbol table;<p> "+ ss + "\n </ul>";
+	  }
+    ;
 
 S   :  e
     |  S ';' e
     ;
 		
 e   : ID '=' NUM     {s[$1] = $$ = $3}
-    //|  e ';' e
     |  ID '=' INVALID 
-               {
-								 throw new Error('Number expected on line ' + (yy.lexer.yylineno + 1) + ":\n" + yy.lexer.showPosition() + '\n');
-							 }
-		;
+          {
+ 	   throw new Error('Number expected on line ' + (yy.lexer.yylineno + 1) + ":\n" + yy.lexer.showPosition() + '\n');
+	  }
+    ;
 
 
