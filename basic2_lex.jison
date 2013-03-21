@@ -44,17 +44,5 @@ e   : ID '=' NUM     {s[$1] = $$ = $3}
 								 throw new Error('Number expected on line ' + (yy.lexer.yylineno + 1) + ":\n" + yy.lexer.showPosition() + '\n');
 							 }
 		;
-/*S   : A
-           { return $1+" identifiers"; }
-    ;
-A   : /* empty */  
- /*          { 
-              console.log("starting"); 
-              $$ = 0; 
-           }
-    | A x  { 
-              $$ = $1 + 1;  
-              console.log($$)
-           }
-    ;*/
+
 
